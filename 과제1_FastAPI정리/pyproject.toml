@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "fastapi정리-과제1"
+version = "0.1.0"
+description = ""
+authors = ["Justman-yzz <a01088744395@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.14"
+fastapi = "^0.128.0"
+uvicorn = "^0.40.0"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "24.10.0"
+ruff = "0.8.2"
+mypy = "1.13.0"
+pytest = "^9.0.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.mypy]
+python_version = 3.13
+strict = true

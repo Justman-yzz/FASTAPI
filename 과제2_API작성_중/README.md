@@ -1,0 +1,43 @@
+DAY1_FASTAPI
+
+## 목표
+
+1. FastAPI 공식 문서를 활용하여 학습하는 방법을 배웁니다.
+2. FastAPI에서 Pydantic Model을 활용하여 데이터를 검증하는 방법을 배웁니다.
+3. FastAPI에서 경로 매개변수를 사용하여 route를 작성하는 방법을 배웁니다.
+4. FastAPI에서 경로 매개변수를 검증하는 방법을 배웁니다.
+5. FastAPI에서 쿼리 매개변수를 사용하여 route를 작성하는 방법을 배웁니다.
+6. FastAPI에서 Pydantic 모델과 Query 객체를 사용하여 경로 매개변수를 검증하는 방법을 배웁니다.
+
+## ✅ API 구현완료
+1. POST /users(유저 생성)
+→ Body: username(str), age(int), gender(Enum: male/female)
+→ UserModel.create()로 생성! {"id": created_id} 반환!
+
+2. GET /users(전체 조회)
+→ UserModel.all()로 전체 조회결과 반환!
+→ [UserOut(id=u.id, username=u.username, age=u.age, gender=u.gender) for u in users] 반환!
+→ None = 404 "유저를 찾을 수 없습니다."
+
+3. GET /users/{user_id}(유저 단건 조회)
+→ Path(gt=0)로 양수 검증!
+→ UserModel.get(id=user_id)로 특정유저 조회결과!
+→ None = 404 "유저를 찾을 수 없습니다."
+
+4. PATCH /users/{user_id}(유저 부분 수정)
+→ Path(gt=0)로 양수 검증! + Pydantic(UserUpdate)로 부분 수정 검증!
+→ user.update(username=?, age=?) 후 수정된 유저 반환!
+→ None = 404 "유저를 찾을 수 없습니다."
+
+5. DELETE /users/{user_id}(유저 삭제)
+→ Path(gt=0)로 양수 검증!
+→ 삭제 후 결과메시지 "detail": f"User: {user_id}, 성공적으로 삭제처리 되었습니다." 반환!
+→ None = 404 "존재하지 않는 유저는 삭제할 수 없습니다."
+
+6. GET /users/search(유저 검색)
+→ Query: username, age(gt=0), gender 그리고 Pydantic + Query로 검증!
+→ 올바른 조건에 맞는 유저 반환
+→ username/age/gender 이외의 쿼리 매개변수는 
+400 에러 처리 + "잘못된 요청입니다: {이름, 나이, 성별, 이외 허용하지 않은 쿼리. 순서대로 정렬}"
+→ None = 404 "유저를 찾을 수 없습니다."
+

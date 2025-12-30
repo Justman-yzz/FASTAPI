@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "과제2-api작성-중"
+version = "0.1.0"
+description = ""
+authors = ["Justman-yzz <a01088744395@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.14"
+pydantic = "^2.12.5"
+fastapi = "^0.128.0"
+uvicorn = "^0.40.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
