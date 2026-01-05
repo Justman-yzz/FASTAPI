@@ -4,7 +4,7 @@
 name = "과제3-api작성-상"
 version = "0.1.0"
 description = ""
-authors = ["admin <admin@example.com>"]
+authors = ["Justman-yzz <a01088744395@gmail.com>"]
 package-mode = false
 
 [tool.poetry.dependencies]
